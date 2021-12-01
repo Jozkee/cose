@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "8jl4r3Mj+Lny6SnTgFwTOHIt/4sOaOOGN67MjSe7Ouca+DC1dgpeVYs7TyyVbGW+ZwIZDOXNYSJQfP0fhk5BHQ==",
+  "success": true,
+  "projectFilePath": "C:\\repos\\consoleapps\\cose\\cose.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\david\\.nuget\\packages\\com.augustcellars.cose\\1.7.0\\com.augustcellars.cose.1.7.0.nupkg.sha512",
+    "C:\\Users\\david\\.nuget\\packages\\petero.cbor\\4.0.0\\petero.cbor.4.0.0.nupkg.sha512",
+    "C:\\Users\\david\\.nuget\\packages\\petero.numbers\\1.4.3\\petero.numbers.1.4.3.nupkg.sha512",
+    "C:\\Users\\david\\.nuget\\packages\\portable.bouncycastle\\1.8.5\\portable.bouncycastle.1.8.5.nupkg.sha512",
+    "C:\\Users\\david\\.nuget\\packages\\system.formats.cbor\\6.0.0\\system.formats.cbor.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

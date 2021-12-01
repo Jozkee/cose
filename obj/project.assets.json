@@ -1,0 +1,231 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {
+      "Com.AugustCellars.COSE/1.7.0": {
+        "type": "package",
+        "dependencies": {
+          "PeterO.Cbor": "4.0.0",
+          "Portable.BouncyCastle": "1.8.5"
+        },
+        "compile": {
+          "lib/netcoreapp2.0/COSE.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/COSE.dll": {}
+        }
+      },
+      "PeterO.Cbor/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "PeterO.Numbers": "1.4.3"
+        },
+        "compile": {
+          "lib/netstandard1.0/CBOR.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/CBOR.dll": {}
+        }
+      },
+      "PeterO.Numbers/1.4.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/Numbers.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/Numbers.dll": {}
+        }
+      },
+      "Portable.BouncyCastle/1.8.5": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/BouncyCastle.Crypto.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/BouncyCastle.Crypto.dll": {}
+        }
+      },
+      "System.Formats.Cbor/6.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/System.Formats.Cbor.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/System.Formats.Cbor.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Com.AugustCellars.COSE/1.7.0": {
+      "sha512": "Og7jMG7EaBgMHhznfnkpN85ik9eRQdyHDInjuKMPg2oZhMNKZsm4g5QQbrEA9KWu/PWnLA+pFfzwJrokzd0imA==",
+      "type": "package",
+      "path": "com.augustcellars.cose/1.7.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "com.augustcellars.cose.1.7.0.nupkg.sha512",
+        "com.augustcellars.cose.nuspec",
+        "lib/net462/COSE.dll",
+        "lib/netcoreapp2.0/COSE.dll",
+        "lib/netstandard2.0/COSE.dll"
+      ]
+    },
+    "PeterO.Cbor/4.0.0": {
+      "sha512": "38mqTwH09if79uv2hUQ/UEyOjgcyDEZxofyQNs33IynU0O+Ewhf2E2YrH733IX8+e52saLUYaoN5V4S+32Mm2g==",
+      "type": "package",
+      "path": "petero.cbor/4.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net20/CBOR.dll",
+        "lib/net20/CBOR.xml",
+        "lib/net40/CBOR.dll",
+        "lib/net40/CBOR.xml",
+        "lib/netstandard1.0/CBOR.dll",
+        "lib/netstandard1.0/CBOR.xml",
+        "petero.cbor.4.0.0.nupkg.sha512",
+        "petero.cbor.nuspec"
+      ]
+    },
+    "PeterO.Numbers/1.4.3": {
+      "sha512": "Cp0mzKWathBDeONNqQXdlZq9czsOIOuhfpfMrjuSopEFTZfSGcApTUE3cLQhj/OZ2TQQ8Q9qfYoNOUoUqME9Xg==",
+      "type": "package",
+      "path": "petero.numbers/1.4.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net20/Numbers.dll",
+        "lib/net20/Numbers.xml",
+        "lib/net40/Numbers.dll",
+        "lib/net40/Numbers.xml",
+        "lib/netstandard1.0/Numbers.dll",
+        "lib/netstandard1.0/Numbers.xml",
+        "petero.numbers.1.4.3.nupkg.sha512",
+        "petero.numbers.nuspec"
+      ]
+    },
+    "Portable.BouncyCastle/1.8.5": {
+      "sha512": "EaCgmntbH1sOzemRTqyXSqYjB6pLH7VCYHhhDYZ59guHSD5qPwhIYa7kfy0QUlmTRt9IXhaXdFhNuBUArp70Ng==",
+      "type": "package",
+      "path": "portable.bouncycastle/1.8.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/BouncyCastle.Crypto.dll",
+        "lib/net40/BouncyCastle.Crypto.xml",
+        "lib/netstandard1.0/BouncyCastle.Crypto.dll",
+        "lib/netstandard1.0/BouncyCastle.Crypto.xml",
+        "lib/netstandard1.3/BouncyCastle.Crypto.dll",
+        "lib/netstandard1.3/BouncyCastle.Crypto.xml",
+        "lib/netstandard2.0/BouncyCastle.Crypto.dll",
+        "lib/netstandard2.0/BouncyCastle.Crypto.xml",
+        "portable.bouncycastle.1.8.5.nupkg.sha512",
+        "portable.bouncycastle.nuspec"
+      ]
+    },
+    "System.Formats.Cbor/6.0.0": {
+      "sha512": "mGaLOoiw7KurJagOOcIsWUoCT5ACIiGxKlCcbYQASefBGXjnCcKTq5Hdjb94eEAKg38zXKlHw4c6EjzgBl9dIw==",
+      "type": "package",
+      "path": "system.formats.cbor/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net5.0/System.Formats.Cbor.dll",
+        "lib/net5.0/System.Formats.Cbor.xml",
+        "lib/net6.0/System.Formats.Cbor.dll",
+        "lib/net6.0/System.Formats.Cbor.xml",
+        "system.formats.cbor.6.0.0.nupkg.sha512",
+        "system.formats.cbor.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0": [
+      "Com.AugustCellars.COSE >= 1.7.0",
+      "System.Formats.Cbor >= 6.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\david\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\repos\\consoleapps\\cose\\cose.csproj",
+      "projectName": "cose",
+      "projectPath": "C:\\repos\\consoleapps\\cose\\cose.csproj",
+      "packagesPath": "C:\\Users\\david\\.nuget\\packages\\",
+      "outputPath": "C:\\repos\\consoleapps\\cose\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\david\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "https://api.nuget.org/v3/index.json": {},
+        "https://msazure.pkgs.visualstudio.com/DefaultCollection/_apis/packaging/Official/nuget/index.json": {},
+        "https://msazure.pkgs.visualstudio.com/One/_packaging/azure-pie-security-singlefeed-consumption/nuget/v3/index.json": {},
+        "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet6/nuget/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "dependencies": {
+          "Com.AugustCellars.COSE": {
+            "target": "Package",
+            "version": "[1.7.0, )"
+          },
+          "System.Formats.Cbor": {
+            "target": "Package",
+            "version": "[6.0.0, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

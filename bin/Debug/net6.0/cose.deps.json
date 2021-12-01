@@ -1,0 +1,109 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "cose/1.0.0": {
+        "dependencies": {
+          "Com.AugustCellars.COSE": "1.7.0",
+          "System.Formats.Cbor": "6.0.0"
+        },
+        "runtime": {
+          "cose.dll": {}
+        }
+      },
+      "Com.AugustCellars.COSE/1.7.0": {
+        "dependencies": {
+          "PeterO.Cbor": "4.0.0",
+          "Portable.BouncyCastle": "1.8.5"
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/COSE.dll": {
+            "assemblyVersion": "1.7.0.0",
+            "fileVersion": "1.7.0.0"
+          }
+        }
+      },
+      "PeterO.Cbor/4.0.0": {
+        "dependencies": {
+          "PeterO.Numbers": "1.4.3"
+        },
+        "runtime": {
+          "lib/netstandard1.0/CBOR.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "PeterO.Numbers/1.4.3": {
+        "runtime": {
+          "lib/netstandard1.0/Numbers.dll": {
+            "assemblyVersion": "1.4.3.0",
+            "fileVersion": "1.4.3.0"
+          }
+        }
+      },
+      "Portable.BouncyCastle/1.8.5": {
+        "runtime": {
+          "lib/netstandard2.0/BouncyCastle.Crypto.dll": {
+            "assemblyVersion": "1.8.5.0",
+            "fileVersion": "1.8.5.50"
+          }
+        }
+      },
+      "System.Formats.Cbor/6.0.0": {
+        "runtime": {
+          "lib/net6.0/System.Formats.Cbor.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "cose/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Com.AugustCellars.COSE/1.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Og7jMG7EaBgMHhznfnkpN85ik9eRQdyHDInjuKMPg2oZhMNKZsm4g5QQbrEA9KWu/PWnLA+pFfzwJrokzd0imA==",
+      "path": "com.augustcellars.cose/1.7.0",
+      "hashPath": "com.augustcellars.cose.1.7.0.nupkg.sha512"
+    },
+    "PeterO.Cbor/4.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-38mqTwH09if79uv2hUQ/UEyOjgcyDEZxofyQNs33IynU0O+Ewhf2E2YrH733IX8+e52saLUYaoN5V4S+32Mm2g==",
+      "path": "petero.cbor/4.0.0",
+      "hashPath": "petero.cbor.4.0.0.nupkg.sha512"
+    },
+    "PeterO.Numbers/1.4.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Cp0mzKWathBDeONNqQXdlZq9czsOIOuhfpfMrjuSopEFTZfSGcApTUE3cLQhj/OZ2TQQ8Q9qfYoNOUoUqME9Xg==",
+      "path": "petero.numbers/1.4.3",
+      "hashPath": "petero.numbers.1.4.3.nupkg.sha512"
+    },
+    "Portable.BouncyCastle/1.8.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-EaCgmntbH1sOzemRTqyXSqYjB6pLH7VCYHhhDYZ59guHSD5qPwhIYa7kfy0QUlmTRt9IXhaXdFhNuBUArp70Ng==",
+      "path": "portable.bouncycastle/1.8.5",
+      "hashPath": "portable.bouncycastle.1.8.5.nupkg.sha512"
+    },
+    "System.Formats.Cbor/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mGaLOoiw7KurJagOOcIsWUoCT5ACIiGxKlCcbYQASefBGXjnCcKTq5Hdjb94eEAKg38zXKlHw4c6EjzgBl9dIw==",
+      "path": "system.formats.cbor/6.0.0",
+      "hashPath": "system.formats.cbor.6.0.0.nupkg.sha512"
+    }
+  }
+}
