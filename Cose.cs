@@ -1,4 +1,5 @@
-﻿using System.Formats.Cbor;
+﻿using System.Diagnostics;
+using System.Formats.Cbor;
 using System.Text;
 
 namespace cose.Impl
@@ -94,7 +95,7 @@ namespace cose.Impl
             if (state == CborReaderState.Tag)
             {
                 ulong tag = (ulong)reader.ReadTag(); // Can you read the tag as a ulong to avoid the cast?
-                if (tag != COSE_Sign1)
+                if (tag != CoseConstants.COSE_Sign1)
                 {
                     CoseHelpers.ThrowUnexpectedTag(tag);
                 }
@@ -149,12 +150,12 @@ namespace cose.Impl
             ReadProtectedHeaderCore(protectedHeaderAsBstr);
         }
 
+        // TODO: Think if read-header logic can be reused for unprotected.
         private static void ReadProtectedHeaderCore(ReadOnlyMemory<byte> protectedHeaderAsBstr)
         {
-
             // deserialize map.
-            var protectedReader = new CborReader(protectedHeaderAsBstr);
-            int? mapLength = protectedReader.ReadStartMap();
+            var reader = new CborReader(protectedHeaderAsBstr);
+            int? mapLength = reader.ReadStartMap(); // this will defer validation to the reader, is that OK?
 
             for (int i = 0; i < mapLength; i++)
             {
@@ -162,103 +163,97 @@ namespace cose.Impl
                 // Labels in each of the maps MUST be unique.
                 // Applications SHOULD verify that the same label does not
                 // occur in both the protected and unprotected headers.
-                int? label = null; // key of the CBOR map key-value pair. It is called label in COSE to avoid confussion with criptographic key.
-                                   //ReadOnlySpan<byte> value = default;
+
+                // key of the CBOR map key-value pair. It is called label in COSE to avoid confussion with criptographic key.
+                int? label = reader.PeekState() switch
+                {
+                    CborReaderState.NegativeInteger or CborReaderState.UnsignedInteger => reader.ReadInt32(),
+                    CborReaderState.TextString => Convert.ToInt32(reader.ReadInt32()),
+                    _ => null
+                };
+
+                if (label is null)
+                {
+                    CoseHelpers.Throw("Invalid value type in header parameter");
+                }
+
                 int? value = null;
-
-                //CoseReaderState
-
-                if (CoseHelpers.IsInteger(protectedReader.PeekState()))
+                // From Table 2 and https://www.iana.org/assignments/cose/cose.xhtml 
+                // TODO:
+                // * Think if we should throw
+                // * Think if we shouldn't validate common header params in here and defer validation after all header params were retrieved.
+                switch ((CommonHeaderParameters)label)
                 {
-                    label = protectedReader.ReadInt32(); // not sure if this is the best way of reading a COSE integer.
+                    case CommonHeaderParameters.Alg: // (int / tstr)
+                        if (CoseHelpers.IsInteger(reader.PeekState()))
+                        {
+                            value = reader.ReadInt32();
+                        }
+                        else if (reader.PeekState() == CborReaderState.TextString)
+                        {
+                            value = Convert.ToInt32(reader.ReadTextString());
+                        }
+                        else
+                        {
+                            CoseHelpers.Throw("Invalid value type in header parameter");
+                        }
+                        break;
 
-                    // From Table 2. 
-                    switch (label)
-                    {
-                        case 1: // alg (int / tstr)
-                            if (CoseHelpers.IsInteger(protectedReader.PeekState()))
-                            {
-                                value = protectedReader.ReadInt32();
-                            }
-                            else if (protectedReader.PeekState() == CborReaderState.TextString)
-                            {
-                                value = Convert.ToInt32(protectedReader.ReadTextString());
-                            }
-                            else
-                            {
-                                CoseHelpers.Throw("Invalid value type in header parameter");
-                            }
-                            break;
+                    case CommonHeaderParameters.Crit: // ([+label])
+                        if (reader.PeekState() != CborReaderState.StartArray)
+                        {
+                            CoseHelpers.Throw("Invalid value type in header parameter");
+                        }
 
-                        case 2: // crit ([+label])
-                            if (protectedReader.PeekState() != CborReaderState.StartArray)
-                            {
-                                CoseHelpers.Throw("Invalid value type in header parameter");
-                            }
+                        // TODO
+                        break;
 
+                    case CommonHeaderParameters.ContentType: // (tstr / uint)
+                        if (reader.PeekState() == CborReaderState.TextString)
+                        {
                             // TODO
-                            break;
+                        }
+                        else if (reader.PeekState() == CborReaderState.UnsignedInteger)
+                        {
+                            // TODO
+                        }
+                        else
+                        {
+                            CoseHelpers.Throw("Invalid value type in header parameter");
+                        }
+                        break;
+                    case CommonHeaderParameters.Kid: // (bstr)
+                        if (reader.PeekState() != CborReaderState.ByteString)
+                        {
+                            CoseHelpers.Throw("Invalid value type in header parameter");
+                        }
+                        // TODO
+                        break;
+                    case CommonHeaderParameters.IV: // (bstr) maybe it can be collepsed with above case.
+                        if (reader.PeekState() != CborReaderState.ByteString)
+                        {
+                            CoseHelpers.Throw("Invalid value type in header parameter");
+                        }
+                        // TODO
+                        break;
+                    case CommonHeaderParameters.PartialIV: // (bstr)
+                        if (reader.PeekState() != CborReaderState.ByteString)
+                        {
+                            CoseHelpers.Throw("Invalid value type in header parameter");
+                        }
+                        // TODO
+                        break;
+                    case CommonHeaderParameters.CounterSignature: // (COSE_Signature / [+COSE_Signature])
+                            // TODO
+                        break;
 
-                        case 3: // content type (tstr / uint)
-                            if (protectedReader.PeekState() == CborReaderState.TextString)
-                            {
-                                // TODO
-                            }
-                            else if (protectedReader.PeekState() == CborReaderState.UnsignedInteger)
-                            {
-                                // TODO
-                            }
-                            else
-                            {
-                                CoseHelpers.Throw("Invalid value type in header parameter");
-                            }
-                            break;
-                        case 4: // kid (bstr)
-                            if (protectedReader.PeekState() != CborReaderState.ByteString)
-                            {
-                                CoseHelpers.Throw("Invalid value type in header parameter");
-                            }
-                            // TODO
-                            break;
-                        case 5: // IV (bstr) maybe it can be collepsed with above case.
-                            if (protectedReader.PeekState() != CborReaderState.ByteString)
-                            {
-                                CoseHelpers.Throw("Invalid value type in header parameter");
-                            }
-                            // TODO
-                            break;
-                        case 6: // Partial IV
-                            if (protectedReader.PeekState() != CborReaderState.ByteString)
-                            {
-                                CoseHelpers.Throw("Invalid value type in header parameter");
-                            }
-                            // TODO
-                            break;
-                        case 7: // counter signature (COSE_Signature / [+COSE_Signature])
-                                // TODO
-                            break;
-                    }
-                }
-                else // TODO: decide what to do with string labels
-                {
-                    CoseHelpers.Throw("Protected header map is malformed.");
+                    default:
+                        // TODO
+                        break;
                 }
 
+                Debug.Assert(value != null);
             }
         }
-
-        // COSE tags https://datatracker.ietf.org/doc/html/rfc8152#page-8 Table 1.
-
-        // Supported
-        const uint COSE_Sign1 = 18;
-
-        // Planned to support but not yet supported
-        const uint COSE_Sign = 98;
-        const uint COSE_Encrypt = 96;
-        const uint COSE_Encrypt0 = 16;
-
-        // Not planned to support
-        const uint COSE_Mac = 97;
-        const uint COSE_Mac0 = 17;
     }
 }
